@@ -31,4 +31,4 @@ spec:
               port: 8000
               path: /health
             initialDelaySeconds: 10 
-            periodSeconds: 5  
+            periodSeconds: 5
