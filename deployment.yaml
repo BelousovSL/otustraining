@@ -17,6 +17,27 @@ spec:
       containers:
         - name: otustaining
           image: belousov2501/otus_training:latest
+          env:
+            - name: HR_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: mega-service-config-user
+                  key: HR_USER
+            - name: HR_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: mega-service-config-host
+                  key: HR_HOST
+            - name: HR_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: mega-service-config-database
+                  key: HR_DATABASE
+            - name: HR_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mega-service-config-password
+                  key: HR_PASSWORD
           ports:
             - containerPort: 8000
           livenessProbe:

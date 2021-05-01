@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mega-service-config-user
+data:
+  HR_USER: myuser
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mega-service-config-host
+data:
+  HR_HOST: postgres
+  
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mega-service-config-database
+data:
+  HR_DATABASE: myapp
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mega-service-config-password
+data:
+  HR_PASSWORD: cGFzc3dk

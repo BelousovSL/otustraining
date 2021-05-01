@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mega-initdb
+spec:
+  template:
+    metadata:
+      name: mega-initdb
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: initdb
+        image: postgres:latest
+        env:
+          - name: DATABASE_URI
+            value: "postgresql://myuser:passwd@postgres/myapp"
+        command:
+          - sh
+          - "-c"
+          - |
+            psql $DATABASE_URI <<'EOF'
+              create TABLE persons(id SERIAL PRIMARY KEY, name VARCHAR(255), surname VARCHAR(255));
+            EOF
+  backoffLimit: 2
